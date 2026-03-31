@@ -1,12 +1,20 @@
-<html>
-    <head>
-        <style>
-            body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pergunta Especial</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: sans-serif;
+        }
+
         a {
             text-decoration: none;
         }
@@ -15,54 +23,72 @@
             font-size: 20px;
             color: white;
             height: 250px;
-            widt: 350px;
+            width: 350px; /* Corrigido de 'widt' */
             border-radius: 10px;
             background: #191919;
             flex-direction: column;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-        
+
         .buttons-container {
             display: flex;
             justify-content: space-around;
+            align-items: center;
             height: 50px;
-            width: 150px;
+            width: 200px;
+            margin-top: 20px;
         }
+
         button {
-            height: 30px;
-            weidth: 50px;
+            height: 35px;
+            width: 70px; /* Corrigido de 'weidth' */
             background: white;
+            border: none;
             border-radius: 5px;
             color: blue;
             font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
-        </style>
-    </head>
-    <body>
-        <div class="box">
-            <p>C*zinho hoje?</p>
-           <div class="buttons-container">
-    <a href="https://youtu.be/dl1qE3wRiPE?si=azzdwCnv9-T79UUY&t=7" target="_blank" class="btn-sim">
-        <button type="button">Sim</button>
-    </a>
-    
-    <button id="no">Não</button>
-</div>
-        </div>
-    </body>
-    <script>
-        let button = document.getElementById('no');
-        let height = window.innerHeight - 50;
-        let width = window.innerWidth - 50;
 
-        button.addEventListener('mouseover', function () {
-            button.style.position = "absolute";
-            button.style.top = Math.random() * height + "px";
-            button.style.left = Math.random() * width + "px";
-        })
-    
-        
+        button:active {
+            transform: scale(0.95);
+        }
+
+        #no {
+            /* O botão 'Não' precisa de transição suave se quiser que ele 'deslize' */
+            transition: top 0.1s, left 0.1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>C*zinho hoje?</p>
+        <div class="buttons-container">
+            <a href="https://youtu.be/dl1qE3wRiPE?si=azzdwCnv9-T79UUY&t=7" target="_blank">
+                <button type="button">Sim</button>
+            </a>
+            
+            <button id="no">Não</button>
+        </div>
+    </div>
+
+    <script>
+        let buttonNo = document.getElementById('no');
+
+        buttonNo.addEventListener('mouseover', function () {
+            // Calcula limites para o botão não sair totalmente da tela
+            let height = window.innerHeight - 50;
+            let width = window.innerWidth - 100;
+
+            buttonNo.style.position = "absolute";
+            buttonNo.style.top = Math.random() * height + "px";
+            buttonNo.style.left = Math.random() * width + "px";
+        });
     </script>
+</body>
 </html>
